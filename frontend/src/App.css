@@ -15,12 +15,19 @@ select,
 input {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18pt;
+  border: none;
+  background-color: #eee;
+}
+select:focus,
+input:focus {
+  background-color: #bbb;
+  outline: none;
 }
 
 .Form {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 100%;
   padding: 0.5em;
   font-size: 18pt;

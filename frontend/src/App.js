@@ -11,6 +11,10 @@ class App extends Component {
             zoober<span className="x">X</span>
           </div>
           <form className="Form">
+            <p>
+              Click on the map to the right to auto-fill that location or type
+              in the boxes below. Click "Request" and enjoy your ride.
+            </p>
             <label htmlFor="latitude">Your latitude</label>
             <input type="number" name="latitude" />
             <label htmlFor="longitude">Your longitude</label>
