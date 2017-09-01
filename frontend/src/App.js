@@ -3,6 +3,12 @@ import "./App.css";
 import Map from "./Map";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pickupLocation: { lat: null, lng: null }
+    };
+  }
   render() {
     return (
       <div className="App">
@@ -33,6 +39,7 @@ class App extends Component {
         </div>
         <div className="Map">
           <Map
+            onDoubleClick={mouseEvent => mouseEvent.latLng}
             containerElement={<div style={{ height: "100%" }} />}
             mapElement={<div style={{ height: "100%" }} />}
           />

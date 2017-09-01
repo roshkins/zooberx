@@ -5,40 +5,44 @@ exports[`renders correctly 1`] = `
   className="App"
 >
   <div
-    className="LocationForm"
+    className="LeftColumn"
   >
     <div
       className="Logo"
     >
-      ZooberX
-    </div>
-    <form>
-      <label
-        htmlFor="latitude"
+      zoober
+      <span
+        className="x"
       >
-        Your latitude
-      </label>
+        X
+      </span>
+    </div>
+    <form
+      className="Form"
+    >
+      <p>
+        Double-click on the map to the right to auto-fill that location or type in the boxes below. Click "Request" and enjoy your ride.
+      </p>
       <input
         name="latitude"
-        type="text"
+        placeholder="Your latitude"
+        type="number"
       />
-      <label
-        htmlFor="longitude"
-      >
-        Your longitude
-      </label>
       <input
         name="longitude"
-        type="text"
+        placeholder="Your longitude"
+        type="number"
       />
-      <label
-        htmlFor="direction"
-      >
-        What is your destination?
-      </label>
       <select
+        defaultValue="direction"
         name="direction"
       >
+        <option
+          disabled={true}
+          value="direction"
+        >
+          Where to?
+        </option>
         <option
           value="Kenya"
         >
@@ -51,6 +55,7 @@ exports[`renders correctly 1`] = `
         </option>
       </select>
       <input
+        className="Submit"
         type="submit"
         value="Request"
       />
