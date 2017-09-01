@@ -21,7 +21,7 @@ describe('Wildebeest model', function() {
       latitude: '1',
       longitude: '2',
       name: 'Abe',
-      direction: 'Kenya',
+      direction: 'Tanzania',
     },
     {
       latitude: '4',
@@ -72,8 +72,8 @@ describe('Wildebeest model', function() {
       direction: 'Kenya',
     },
     {
-      latitude: '4',
-      longitude: '5',
+      latitude: '6',
+      longitude: '7',
       name: 'Ashley',
       direction: 'Tanzania',
     },
@@ -166,15 +166,15 @@ describe('Wildebeest model', function() {
       });
   });
 
-  it('should find the closest beest even with a location not in range', function(
+  it('should find the closest beest with a location not in range', function(
     done
   ) {
     superagent
       .get('http://localhost:3000/api/wildebeests/getYourWildebeest')
       .send({
-        latitude: '-333.46',
+        latitude: '333.46',
         longitude: '1445.8237321',
-        destination: 'Kenya',
+        destination: 'Tanzania',
       })
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json')
@@ -184,14 +184,56 @@ describe('Wildebeest model', function() {
         }
         assert.equal(response.status, 200);
         assert.ok(response.body);
-        assert.equal(response.body.name, 'Beth');
+        assert.equal(response.body.name, 'Ashley');
         done();
       });
   });
 
-  it('should return an error if none of the beests are going in this direction', function(
+  it('should return "no_beests" if none of the beests are going in this direction', function(
     done
   ) {
-    done();
+    const idsToDelete = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var countDone = 0;
+    const allDone = () => {
+      if (countDone < idsToDelete.length - 1) {
+        return countDone++;
+      } else {
+        superagent
+          .get('http://localhost:3000/api/wildebeests/getYourWildebeest')
+          .send({
+            latitude: '333.46',
+            longitude: '1445.8237321',
+            destination: 'Kenya',
+          })
+          .set('Accept', 'application/json')
+          .set('Content-Type', 'application/json')
+          .end(function(err, response) {
+            if (err) {
+              return done(err);
+            }
+
+            console.log('body of beest', response.body);
+            assert.equal(response.status, 200);
+            assert.equal(response.body.name, 'no_beests');
+            done();
+          });
+      }
+    };
+
+    idsToDelete.forEach(number => {
+      superagent
+        .delete('http://localhost:3000/api/wildebeests/' + number)
+        .send()
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
+        .end(function(err, response) {
+          if (err) {
+            return done(err);
+          }
+          assert.equal(response.status, 200);
+          assert.ok(response.body);
+          allDone();
+        });
+    });
   });
 });

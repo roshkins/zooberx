@@ -22,14 +22,15 @@ module.exports = function(Wildebeest) {
     // Get array of beests
     Wildebeest.find({where: {direction: destination}}, function(err, beests) {
       // go through each one, computer distance, save to bestBeast if best
-      console.log('Wildebeest response', err, beests);
       if (err) {
         callback(err, null);
         return;
       }
       if (beests.length === 0) {
-        callback({name: 'noBeests', message: 'No beests are available'}, null);
+        callback(null, 'no_beests');
+        return;
       }
+      console.log('beests.length', beests.length);
       var closestBeest = beests.reduce((bestSoFarBeest, beest) => {
         var beestLongitude = Number(beest.longitude);
         var beestLatitude = Number(beest.latitude);
@@ -38,18 +39,21 @@ module.exports = function(Wildebeest) {
         var bestLatitude = Number(bestSoFarBeest.latitude);
 
         var beestDistance = Math.sqrt(
-          Math.pow(beestLatitude, 2) + Math.pow(beestLongitude, 2)
+          Math.pow(beestLatitude - myLatitude, 2) +
+            Math.pow(beestLongitude - myLongitude, 2)
         );
-        console.log(beestDistance);
         var bestDistance = Math.sqrt(
-          Math.pow(bestLatitude, 2) + Math.pow(bestLongitude, 2)
+          Math.pow(bestLatitude - myLatitude, 2) +
+            Math.pow(bestLongitude - myLongitude, 2)
         );
+
         if (bestDistance === null || beestDistance < bestDistance) {
           return beest;
         } else {
           return bestSoFarBeest;
         }
-      }, null);
+      }, beests[0]);
+      console.log(closestBeest);
       name = closestBeest.name;
       callback(null, name);
     });
