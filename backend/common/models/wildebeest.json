@@ -27,5 +27,43 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "getYourWildebeest": {
+      "accepts": [
+        {
+          "arg": "latitude",
+          "type": "string",
+          "required": true,
+          "description": "the latitude of your current location"
+        },
+        {
+          "arg": "longitude",
+          "type": "string",
+          "required": true,
+          "description": "The longitude of your current location."
+        },
+        {
+          "arg": "destination",
+          "type": "string",
+          "required": true,
+          "description": "The destination country of your wildebeest."
+        }
+      ],
+      "returns": [
+        {
+          "arg": "name",
+          "type": "string",
+          "root": false,
+          "description": "The name of the wildebeest coming to pick you up."
+        }
+      ],
+      "description": "gets the nearest wildebeest to the given location and direction",
+      "http": [
+        {
+          "path": "getYourWildebeest",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }
