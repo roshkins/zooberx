@@ -15,12 +15,16 @@ class App extends Component {
               Click on the map to the right to auto-fill that location or type
               in the boxes below. Click "Request" and enjoy your ride.
             </p>
-            <label htmlFor="latitude">Your latitude</label>
-            <input type="number" name="latitude" />
-            <label htmlFor="longitude">Your longitude</label>
-            <input type="number" name="longitude" />
-            <label htmlFor="direction">What is your destination?</label>
-            <select name="direction">
+            <input type="number" name="latitude" placeholder="Your latitude" />
+            <input
+              type="number"
+              name="longitude"
+              placeholder="Your longitude"
+            />
+            <select name="direction" defaultValue="direction">
+              <option disabled value="direction">
+                Where to?
+              </option>
               <option value="Kenya">Kenya</option>
               <option value="Tanzania">Tanzania</option>
             </select>
