@@ -1,18 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Map from "./Map";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <div className="logo">ZooberX</div>
+        <div className="locationForm">
+          <form>
+            <label htmlFor="latitude">Your latitude</label>
+            <input type="text" name="latitude" />
+            <label htmlFor="longitude">Your longitude</label>
+            <input type="text" name="longitude" />
+            <label htmlFor="direction">What is your destination?</label>
+            <select name="direction">
+              <option value="Kenya">Kenya</option>
+              <option value="Tanzania">Tanzania</option>
+            </select>
+            <input type="submit" value="Request" />
+          </form>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="map">
+          <Map
+            containerElement={<div style={{ height: `100%` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+          />
+        </div>
       </div>
     );
   }
