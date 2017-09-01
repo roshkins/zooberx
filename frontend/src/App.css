@@ -22,7 +22,7 @@ input {
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
-  padding: 2em;
+  padding: 0.5em;
   font-size: 18pt;
 }
 .LeftColumn {
