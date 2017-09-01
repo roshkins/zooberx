@@ -5,7 +5,76 @@ exports[`renders correctly 1`] = `
   className="App"
 >
   <div
+    className="logo"
+  >
+    ZooberX
+  </div>
+  <div
     className="locationForm"
-  />
+  >
+    <form>
+      <label
+        htmlFor="latitude"
+      >
+        Your latitude
+      </label>
+      <input
+        name="latitude"
+        type="text"
+      />
+      <label
+        htmlFor="longitude"
+      >
+        Your longitude
+      </label>
+      <input
+        name="longitude"
+        type="text"
+      />
+      <label
+        htmlFor="direction"
+      >
+        What is your destination?
+      </label>
+      <select
+        name="direction"
+      >
+        <option
+          value="Kenya"
+        >
+          Kenya
+        </option>
+        <option
+          value="Tanzania"
+        >
+          Tanzania
+        </option>
+      </select>
+      <input
+        type="submit"
+        value="Request"
+      />
+    </form>
+  </div>
+  <div
+    className="map"
+  >
+    <div
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      />
+      <div />
+    </div>
+  </div>
 </div>
 `;
