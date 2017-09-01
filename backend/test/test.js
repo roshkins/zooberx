@@ -45,7 +45,7 @@ describe('Wildebeest model', function() {
       latitude: '1',
       longitude: '2',
       name: 'Moses',
-      direction: 'Kenya',
+      direction: 'Tanzania',
     },
     {
       latitude: '4',
@@ -63,11 +63,11 @@ describe('Wildebeest model', function() {
       latitude: '4',
       longitude: '5',
       name: 'Michelle',
-      direction: 'Tanzania',
+      direction: 'Kenya',
     },
     {
-      latitude: '1',
-      longitude: '2',
+      latitude: '1.111232',
+      longitude: '3.2284',
       name: 'Beth',
       direction: 'Kenya',
     },
@@ -141,6 +141,27 @@ describe('Wildebeest model', function() {
             return beest;
           })
         );
+        done();
+      });
+  });
+
+  it('should find the closest beest', function(done) {
+    superagent
+      .get('http://localhost:3000/api/wildebeests/getYourWildebeest')
+      .send({
+        latitude: '1.111232',
+        longitude: '3.2284',
+        destination: 'Kenya',
+      })
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json')
+      .end(function(err, response) {
+        if (err) {
+          return done(err);
+        }
+        assert.equal(response.status, 200);
+        assert.ok(response.body);
+        assert.equal(response.body.name, 'Beth');
         done();
       });
   });

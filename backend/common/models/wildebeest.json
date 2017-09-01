@@ -60,7 +60,7 @@
       "description": "gets the nearest wildebeest to the given location and direction",
       "http": [
         {
-          "path": "getYourWildebeest",
+          "path": "/getYourWildebeest",
           "verb": "get"
         }
       ]

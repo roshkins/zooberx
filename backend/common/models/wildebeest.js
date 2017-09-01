@@ -15,7 +15,7 @@ module.exports = function(Wildebeest) {
     destination,
     callback
   ) {
-    var name;
+    var name = 'Beth';
     // TODO
     callback(null, name);
   };
