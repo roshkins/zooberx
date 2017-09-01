@@ -20,13 +20,61 @@ describe('Wildebeest model', function() {
     {
       latitude: '1',
       longitude: '2',
-      name: 'Adrian',
+      name: 'Abe',
+      direction: 'Kenya',
+    },
+    {
+      latitude: '4',
+      longitude: '5',
+      name: 'Tony',
+      direction: 'Tanzania',
+    },
+    {
+      latitude: '1',
+      longitude: '2',
+      name: 'Dan',
       direction: 'Kenya',
     },
     {
       latitude: '4',
       longitude: '5',
       name: 'Vashti',
+      direction: 'Tanzania',
+    },
+    {
+      latitude: '1',
+      longitude: '2',
+      name: 'Moses',
+      direction: 'Kenya',
+    },
+    {
+      latitude: '4',
+      longitude: '5',
+      name: 'Dana',
+      direction: 'Tanzania',
+    },
+    {
+      latitude: '1',
+      longitude: '2',
+      name: 'Sandra',
+      direction: 'Kenya',
+    },
+    {
+      latitude: '4',
+      longitude: '5',
+      name: 'Michelle',
+      direction: 'Tanzania',
+    },
+    {
+      latitude: '1',
+      longitude: '2',
+      name: 'Beth',
+      direction: 'Kenya',
+    },
+    {
+      latitude: '4',
+      longitude: '5',
+      name: 'Ashley',
       direction: 'Tanzania',
     },
   ];
