@@ -5,13 +5,13 @@ exports[`renders correctly 1`] = `
   className="App"
 >
   <div
-    className="logo"
+    className="LocationForm"
   >
-    ZooberX
-  </div>
-  <div
-    className="locationForm"
-  >
+    <div
+      className="Logo"
+    >
+      ZooberX
+    </div>
     <form>
       <label
         htmlFor="latitude"
@@ -57,7 +57,7 @@ exports[`renders correctly 1`] = `
     </form>
   </div>
   <div
-    className="map"
+    className="Map"
   >
     <div
       style={
