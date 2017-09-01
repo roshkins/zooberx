@@ -16,6 +16,21 @@ describe('Wildebeest model', function() {
     server.close(done);
   });
 
+  const wildebeestsObjects = [
+    {
+      latitude: '1',
+      longitude: '2',
+      name: 'Adrian',
+      direction: 'Kenya',
+    },
+    {
+      latitude: '4',
+      longitude: '5',
+      name: 'Vashti',
+      direction: 'Tanzania',
+    },
+  ];
+
   it('should add wildebeests', function(done) {
     // Example test:
     // superagent
@@ -31,46 +46,7 @@ describe('Wildebeest model', function() {
     //       assert.equal(loginRes.body.userId, 1);
     //     }
     //   });
-    superagent
-      .post('http://localhost:3000/api/wildebeests')
-      .send({
-        latitude: '1',
-        longitude: '2',
-        name: 'Adrian',
-        direction: 'Kenya',
-      })
-      .set('Accept', 'application/json')
-      .set('Content-Type', 'application/json')
-      .end(function(err, response) {
-        if (err) {
-          return done(err);
-        }
 
-        assert.equal(response.status, 200);
-        assert.ok(response.body);
-        assert.equal(response.body.latitude, '1');
-        assert.equal(response.body.longitude, '2');
-        assert.equal(response.body.name, 'Adrian');
-        assert.equal(response.body.direction, 'Kenya');
-        done();
-      });
-  });
-
-  it('should list all wildebeests', function(done) {
-    const wildebeestsObjects = [
-      {
-        latitude: '1',
-        longitude: '2',
-        name: 'Adrian',
-        direction: 'Kenya',
-      },
-      {
-        latitude: '4',
-        longitude: '5',
-        name: 'Vashti',
-        direction: 'Tanzania',
-      },
-    ];
     var postCount = 0;
     const doneWithPosts = () => {
       // This will be called only after all post requests have finished.
@@ -78,27 +54,7 @@ describe('Wildebeest model', function() {
         postCount++;
         return;
       } else {
-        // check if the beests were added
-        superagent
-          .get('http://localhost:3000/api/wildebeests')
-          .send()
-          .set('Accept', 'application/json')
-          .set('Content-Type', 'application/json')
-          .end(function(err, response) {
-            if (err) {
-              return done(err);
-            }
-            assert.equal(response.status, 200);
-            assert.ok(response.body);
-            console.log(
-              'post:',
-              wildebeestsObjects,
-              'response:',
-              response.body
-            );
-            assert.deepEqual(wildebeestsObjects, response.body);
-            done();
-          });
+        done();
       }
     };
 
@@ -112,9 +68,32 @@ describe('Wildebeest model', function() {
           if (err) {
             return done(err);
           }
-
           doneWithPosts();
         });
     });
+  });
+
+  it('should list all wildebeests', function(done) {
+    // check if the beests were added
+    superagent
+      .get('http://localhost:3000/api/wildebeests')
+      .send()
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json')
+      .end(function(err, response) {
+        if (err) {
+          return done(err);
+        }
+        assert.equal(response.status, 200);
+        assert.ok(response.body);
+        assert.deepEqual(
+          wildebeestsObjects,
+          response.body.map(beest => {
+            delete beest.id;
+            return beest;
+          })
+        );
+        done();
+      });
   });
 });
