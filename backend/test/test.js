@@ -165,4 +165,33 @@ describe('Wildebeest model', function() {
         done();
       });
   });
+
+  it('should find the closest beest even with a location not in range', function(
+    done
+  ) {
+    superagent
+      .get('http://localhost:3000/api/wildebeests/getYourWildebeest')
+      .send({
+        latitude: '-333.46',
+        longitude: '1445.8237321',
+        destination: 'Kenya',
+      })
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json')
+      .end(function(err, response) {
+        if (err) {
+          return done(err);
+        }
+        assert.equal(response.status, 200);
+        assert.ok(response.body);
+        assert.equal(response.body.name, 'Beth');
+        done();
+      });
+  });
+
+  it('should return an error if none of the beests are going in this direction', function(
+    done
+  ) {
+    done();
+  });
 });
