@@ -9,12 +9,13 @@ const googleMapURL =
 const Map = withGoogleMap(props =>
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={3}
-    defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+    defaultZoom={7}
+    defaultCenter={{ lat: -1.432302, lng: 34.8649605 }}
     onClick={props.onMapClick}
     googleMapURL={googleMapURL}
   >
-    <Marker />
+    <Marker position={{ lat: -3.60345, lng: 34.732605 }} />
+    <Marker position={{ lat: 1.261154, lng: 34.997316 }} />
   </GoogleMap>
 );
 

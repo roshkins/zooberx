@@ -12,8 +12,8 @@ class App extends Component {
           </div>
           <form className="Form">
             <p>
-              Click on the map to the right to auto-fill that location or type
-              in the boxes below. Click "Request" and enjoy your ride.
+              Double-click on the map to the right to auto-fill that location or
+              type in the boxes below. Click "Request" and enjoy your ride.
             </p>
             <input type="number" name="latitude" placeholder="Your latitude" />
             <input
