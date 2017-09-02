@@ -18,7 +18,7 @@ class App extends Component {
           </div>
           <form className="Form">
             <p>
-              Double-click on the map to the right to auto-fill that location or
+              Right-click on the map to the right to auto-fill that location or
               type in the boxes below. Click "Request" and enjoy your ride.
             </p>
             <input type="number" name="latitude" placeholder="Your latitude" />
@@ -39,9 +39,22 @@ class App extends Component {
         </div>
         <div className="Map">
           <Map
-            onDoubleClick={mouseEvent => mouseEvent.latLng}
+            setLocation={mouseEvent => {
+              const coordinates = mouseEvent.latLng;
+              this.setState({
+                pickupLocation: {
+                  lat: coordinates.lat(),
+                  lng: coordinates.lng()
+                }
+              });
+              mouseEvent.stop();
+            }}
             containerElement={<div style={{ height: "100%" }} />}
             mapElement={<div style={{ height: "100%" }} />}
+            markers={[
+              { position: { lat: -3.60345, lng: 34.732605 } },
+              { position: { lat: 1.261154, lng: 34.997316 } }
+            ]}
           />
         </div>
       </div>
