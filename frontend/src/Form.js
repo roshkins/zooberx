@@ -3,6 +3,13 @@ import { PropTypes } from "prop-types";
 
 class Form extends Component {
   render() {
+    const latitude = this.props.pickupLocation
+      ? this.props.pickupLocation.lat
+      : "";
+    const longitude = this.props.pickupLocation
+      ? this.props.pickupLocation.lng
+      : "";
+
     return (
       <form className="Form">
         <p>
@@ -13,18 +20,21 @@ class Form extends Component {
           type="number"
           name="latitude"
           placeholder="Your latitude"
-          value={this.props.latitude}
+          value={latitude}
+          onChange={event => this.props.setLatitude(Number(event.target.value))}
         />
         <input
           type="number"
           name="longitude"
           placeholder="Your longitude"
-          value={this.props.longitude}
+          value={longitude}
+          onChange={event =>
+            this.props.setLongitude(Number(event.target.value))}
         />
         <select
           name="direction"
           value={this.props.direction}
-          defaultValue="direction"
+          onChange={event => this.props.setDirection(event.target.value)}
         >
           <option disabled value="direction">
             Where to?
@@ -39,8 +49,7 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  latitude: PropTypes.string,
-  longitude: PropTypes.string,
+  pickupLocation: PropTypes.object,
   direction: PropTypes.string,
   setLatitude: PropTypes.func.isRequired,
   setLongitude: PropTypes.func.isRequired,

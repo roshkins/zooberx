@@ -8,6 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
       pickupLocation: null,
+      pickupDirection: "direction",
       markers: [
         { position: { lat: -3.60345, lng: 34.732605 } },
         { position: { lat: 1.261154, lng: 34.997316 } }
@@ -21,7 +22,22 @@ class App extends Component {
           <div className="Logo">
             zoober<span className="x">X</span>
           </div>
-          <Form />
+          <Form
+            pickupLocation={this.state.pickupLocation}
+            setLatitude={lat =>
+              this.setState({
+                pickupLocation: { ...this.state.pickupLocation, lat }
+              })}
+            setLongitude={lng =>
+              this.setState({
+                pickupLocation: { ...this.state.pickupLocation, lng }
+              })}
+            setDirection={pickupDirection =>
+              this.setState({
+                pickupDirection
+              })}
+            direction={this.state.pickupDirection}
+          />
         </div>
         <div className="Map">
           <Map

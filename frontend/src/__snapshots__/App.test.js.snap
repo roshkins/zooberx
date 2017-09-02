@@ -25,20 +25,23 @@ exports[`renders correctly 1`] = `
       </p>
       <input
         name="latitude"
+        onChange={[Function]}
         placeholder="Your latitude"
         type="number"
-        value={undefined}
+        value=""
       />
       <input
         name="longitude"
+        onChange={[Function]}
         placeholder="Your longitude"
         type="number"
-        value={undefined}
+        value=""
       />
       <select
         defaultValue="direction"
         name="direction"
-        value={undefined}
+        onChange={[Function]}
+        value={null}
       >
         <option
           disabled={true}
