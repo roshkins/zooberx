@@ -17,6 +17,7 @@ class Form extends Component {
           in the boxes below. Click "Request" and enjoy your ride.
         </p>
         <input
+          id="latitude"
           type="number"
           name="latitude"
           placeholder="Your latitude"
@@ -24,6 +25,7 @@ class Form extends Component {
           onChange={event => this.props.setLatitude(Number(event.target.value))}
         />
         <input
+          id="longitude"
           type="number"
           name="longitude"
           placeholder="Your longitude"
@@ -32,6 +34,7 @@ class Form extends Component {
             this.props.setLongitude(Number(event.target.value))}
         />
         <select
+          id="direction"
           name="direction"
           value={this.props.direction}
           onChange={event => this.props.setDirection(event.target.value)}

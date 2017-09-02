@@ -24,6 +24,7 @@ exports[`renders correctly 1`] = `
         Right-click on the map to the right to auto-fill that location or type in the boxes below. Click "Request" and enjoy your ride.
       </p>
       <input
+        id="latitude"
         name="latitude"
         onChange={[Function]}
         placeholder="Your latitude"
@@ -31,6 +32,7 @@ exports[`renders correctly 1`] = `
         value=""
       />
       <input
+        id="longitude"
         name="longitude"
         onChange={[Function]}
         placeholder="Your longitude"
@@ -38,10 +40,10 @@ exports[`renders correctly 1`] = `
         value=""
       />
       <select
-        defaultValue="direction"
+        id="direction"
         name="direction"
         onChange={[Function]}
-        value={null}
+        value="direction"
       >
         <option
           disabled={true}
