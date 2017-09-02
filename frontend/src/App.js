@@ -11,67 +11,67 @@ class App extends Component {
       pickupDirection: "direction",
       beests: [
         {
-          latitude: "1",
-          longitude: "2",
+          latitude: "-2.5",
+          longitude: "34.732605",
           name: "Abe",
           direction: "Tanzania"
         },
         {
-          latitude: "4",
-          longitude: "5",
+          latitude: "1",
+          longitude: "34.732605",
           name: "Tony",
           direction: "Tanzania"
         },
         {
-          latitude: "1",
-          longitude: "2",
+          latitude: "-2.5",
+          longitude: "34.732605",
           name: "Dan",
           direction: "Kenya"
         },
         {
-          latitude: "4",
-          longitude: "5",
+          latitude: "-1.5",
+          longitude: "34.732605",
           name: "Vashti",
           direction: "Tanzania"
         },
         {
-          latitude: "1",
-          longitude: "2",
+          latitude: "0",
+          longitude: "34.732605",
           name: "Moses",
           direction: "Tanzania"
         },
         {
-          latitude: "4",
-          longitude: "5",
+          latitude: "1",
+          longitude: "34.732605",
           name: "Dana",
           direction: "Tanzania"
         },
         {
-          latitude: "1",
-          longitude: "2",
+          latitude: "-0.5",
+          longitude: "34.732605",
           name: "Sandra",
           direction: "Kenya"
         },
         {
-          latitude: "4",
-          longitude: "5",
+          latitude: "-1.2",
+          longitude: "34.732605",
           name: "Michelle",
           direction: "Kenya"
         },
         {
-          latitude: "1.111232",
-          longitude: "3.2284",
+          latitude: "-0.4",
+          longitude: "34.732605",
           name: "Beth",
           direction: "Kenya"
         },
         {
-          latitude: "6",
-          longitude: "7",
+          latitude: "-1.8",
+          longitude: "34.732605",
           name: "Ashley",
           direction: "Tanzania"
         }
       ],
-      markers: [
+      destinations: [
         { position: { lat: -3.60345, lng: 34.732605 } },
         { position: { lat: 1.261154, lng: 34.997316 } }
       ]
@@ -116,7 +116,8 @@ class App extends Component {
             containerElement={<div style={{ height: "100%" }} />}
             mapElement={<div style={{ height: "100%" }} />}
             pickupLocation={this.state.pickupLocation}
-            markers={this.state.markers}
+            destinations={this.state.destinations}
+            beests={this.state.beests}
           />
         </div>
       </div>

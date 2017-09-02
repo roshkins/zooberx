@@ -10,12 +10,19 @@ const googleMapURL =
 class Map extends Component {
   constructor(props) {
     super(props);
+    var markers = this.props.destinations.concat(
+      this.props.beests.map(beest => ({
+        position: { lat: Number(beest.latitude), lng: Number(beest.longitude) }
+      }))
+    );
+    markers = this.props.pickupLocation
+      ? markers.concat({ position: this.props.pickupLocation })
+      : markers;
+    this.state = {
+      markers
+    };
   }
   render() {
-    const markers = this.props.pickupLocation
-      ? this.props.markers.concat([{ position: this.props.pickupLocation }])
-      : this.props.markers;
-
     return (
       <GoogleMap
         defaultZoom={7}
@@ -23,7 +30,9 @@ class Map extends Component {
         onRightClick={this.props.setLocation}
         googleMapURL={googleMapURL}
       >
-        {markers.map((marker, index) => <Marker {...marker} key={index} />)}
+        {this.state.markers.map((marker, index) =>
+          <Marker {...marker} key={index} />
+        )}
       </GoogleMap>
     );
   }
@@ -31,7 +40,8 @@ class Map extends Component {
 
 Map.propTypes = {
   setLocation: PropTypes.func.isRequired,
-  markers: PropTypes.array.isRequired
+  destinations: PropTypes.array.isRequired,
+  beests: PropTypes.array.isRequired
 };
 export default withGoogleMap(Map);
 
