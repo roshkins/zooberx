@@ -21,21 +21,24 @@ exports[`renders correctly 1`] = `
       className="Form"
     >
       <p>
-        Double-click on the map to the right to auto-fill that location or type in the boxes below. Click "Request" and enjoy your ride.
+        Right-click on the map to the right to auto-fill that location or type in the boxes below. Click "Request" and enjoy your ride.
       </p>
       <input
         name="latitude"
         placeholder="Your latitude"
         type="number"
+        value={undefined}
       />
       <input
         name="longitude"
         placeholder="Your longitude"
         type="number"
+        value={undefined}
       />
       <select
         defaultValue="direction"
         name="direction"
+        value={undefined}
       >
         <option
           disabled={true}

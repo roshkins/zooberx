@@ -12,7 +12,10 @@ class Map extends Component {
     super(props);
   }
   render() {
-    console.log(<GoogleMap />);
+    const markers = this.props.pickupLocation
+      ? this.props.markers.concat([{ position: this.props.pickupLocation }])
+      : this.props.markers;
+
     return (
       <GoogleMap
         defaultZoom={7}
@@ -20,9 +23,7 @@ class Map extends Component {
         onRightClick={this.props.setLocation}
         googleMapURL={googleMapURL}
       >
-        {this.props.markers.map((marker, index) =>
-          <Marker {...marker} key={index} />
-        )}
+        {markers.map((marker, index) => <Marker {...marker} key={index} />)}
       </GoogleMap>
     );
   }
