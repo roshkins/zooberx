@@ -3,6 +3,8 @@ import "./App.css";
 import Map from "./Map";
 import Form from "./Form";
 
+const backendApi = "http://localhost:3001/api/";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -73,9 +75,23 @@ class App extends Component {
       ],
       destinations: [
         { position: { lat: -3.60345, lng: 34.732605 } },
-        { position: { lat: 1.261154, lng: 34.997316 } }
+        { position: { lat: -1.261154, lng: 34.997316 } }
       ]
     };
+  }
+  componentDidMount() {
+    const getBeestsFromServer = () => {
+      fetch(backendApi + "wildebeests", {
+        method: "GET",
+        headers: { Accept: "application/json" }
+      })
+        .then(response => response.json())
+        .then(json => {
+          this.setState({ beests: json });
+        });
+    };
+    getBeestsFromServer();
+    setInterval(getBeestsFromServer, 3000);
   }
   render() {
     return (

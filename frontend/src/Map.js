@@ -8,8 +8,7 @@ const googleMapURL =
   "https://maps.googleapis.com/maps/api/js?v=3.27&libraries=places,geometry&key=AIzaSyCoIwKw-GePkOM4yjeL4a55AIKu_E0C65Q";
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
+  render() {
     var markers = this.props.destinations.concat(
       this.props.beests.map(beest => ({
         position: { lat: Number(beest.latitude), lng: Number(beest.longitude) }
@@ -18,21 +17,15 @@ class Map extends Component {
     markers = this.props.pickupLocation
       ? markers.concat({ position: this.props.pickupLocation })
       : markers;
-    this.state = {
-      markers
-    };
-  }
-  render() {
+
     return (
       <GoogleMap
-        defaultZoom={7}
-        defaultCenter={{ lat: -1.432302, lng: 34.8649605 }}
+        defaultZoom={8}
+        defaultCenter={{ lat: -2.432302, lng: 34.8649605 }}
         onRightClick={this.props.setLocation}
         googleMapURL={googleMapURL}
       >
-        {this.state.markers.map((marker, index) =>
-          <Marker {...marker} key={index} />
-        )}
+        {markers.map((marker, index) => <Marker {...marker} key={index} />)}
       </GoogleMap>
     );
   }
