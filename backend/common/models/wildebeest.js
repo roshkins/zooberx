@@ -38,6 +38,7 @@ module.exports = function(Wildebeest) {
         var bestLongitude = Number(bestSoFarBeest.longitude);
         var bestLatitude = Number(bestSoFarBeest.latitude);
 
+        // find euclidean distances
         var beestDistance = Math.sqrt(
           Math.pow(beestLatitude - myLatitude, 2) +
             Math.pow(beestLongitude - myLongitude, 2)

@@ -8,9 +8,18 @@ module.exports = function(app, cb) {
    * http://docs.strongloop.com/display/public/LB/Working+with+LoopBack+objects
    * for more info.
    */
+
+  /**
+   Returns a floating point number in the specified range.
+   */
   function randomInRange(lower, upper) {
     return (upper - lower) * Math.random() + lower;
   }
+
+  /**
+    This is a callback setInterval calls which goes through each name and
+    updates the wildebeests position randomly in a sensible range.
+   */
   function generateBeests() {
     const beest = app.models.wildebeest;
     const beestNames = [
@@ -38,6 +47,8 @@ module.exports = function(app, cb) {
       );
     });
   }
+
+  // We only want to randomly move beests if we aren't testing our code!
   if (process.env.mode !== 'TEST') {
     generateBeests();
     setInterval(generateBeests, 3000);
