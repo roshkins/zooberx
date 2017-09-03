@@ -7,7 +7,7 @@ const app = require('../server/server');
 
 describe('Wildebeest model', function() {
   var server;
-
+  const loopbackUrl = 'http://localhost:3001/';
   beforeEach(function(done) {
     server = app.listen(done);
   });
@@ -108,7 +108,7 @@ describe('Wildebeest model', function() {
 
     wildebeestsObjects.forEach(beest => {
       superagent
-        .post('http://localhost:3000/api/wildebeests')
+        .post(loopbackUrl + 'api/wildebeests')
         .send(beest)
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
@@ -124,7 +124,7 @@ describe('Wildebeest model', function() {
   it('should list all wildebeests', function(done) {
     // check if the beests were added
     superagent
-      .get('http://localhost:3000/api/wildebeests')
+      .get(loopbackUrl + 'api/wildebeests')
       .send()
       .set('Accept', 'application/json')
       .set('Content-Type', 'application/json')
@@ -147,7 +147,7 @@ describe('Wildebeest model', function() {
 
   it('should find the closest beest', function(done) {
     superagent
-      .get('http://localhost:3000/api/wildebeests/getYourWildebeest')
+      .get(loopbackUrl + 'api/wildebeests/getYourWildebeest')
       .send({
         latitude: '1.111232',
         longitude: '3.2284',
@@ -170,7 +170,7 @@ describe('Wildebeest model', function() {
     done
   ) {
     superagent
-      .get('http://localhost:3000/api/wildebeests/getYourWildebeest')
+      .get(loopbackUrl + 'api/wildebeests/getYourWildebeest')
       .send({
         latitude: '333.46',
         longitude: '1445.8237321',
@@ -189,6 +189,7 @@ describe('Wildebeest model', function() {
       });
   });
 
+  // eslint-disable-next-line max-len
   it('should return "no_beests" if none of the beests are going in this direction', function(
     done
   ) {
@@ -199,7 +200,7 @@ describe('Wildebeest model', function() {
         return countDone++;
       } else {
         superagent
-          .get('http://localhost:3000/api/wildebeests/getYourWildebeest')
+          .get(loopbackUrl + 'api/wildebeests/getYourWildebeest')
           .send({
             latitude: '333.46',
             longitude: '1445.8237321',
@@ -212,7 +213,6 @@ describe('Wildebeest model', function() {
               return done(err);
             }
 
-            console.log('body of beest', response.body);
             assert.equal(response.status, 200);
             assert.equal(response.body.name, 'no_beests');
             done();
@@ -222,7 +222,7 @@ describe('Wildebeest model', function() {
 
     idsToDelete.forEach(number => {
       superagent
-        .delete('http://localhost:3000/api/wildebeests/' + number)
+        .delete(loopbackUrl + 'api/wildebeests/' + number)
         .send()
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
@@ -230,6 +230,7 @@ describe('Wildebeest model', function() {
           if (err) {
             return done(err);
           }
+          console.log(response.body);
           assert.equal(response.status, 200);
           assert.ok(response.body);
           allDone();
