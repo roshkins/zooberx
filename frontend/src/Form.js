@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
+import Ride from "./Ride";
 
 class Form extends Component {
   render() {
@@ -46,6 +47,7 @@ class Form extends Component {
           <option value="Tanzania">Tanzania</option>
         </select>
         <input type="submit" value="Request" className="Submit" />
+        <Ride />
       </form>
     );
   }

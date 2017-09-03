@@ -3,6 +3,7 @@
 .Map {
   flex: 2;
   height: 100%;
+  filter: grayscale(100%);
 }
 .App {
   display: flex;
@@ -63,4 +64,14 @@ input:focus {
   border: none;
   padding: 0.5em;
   cursor: pointer;
+}
+.RideImg {
+  background-image: url('./Wildebeest.png');
+  background-repeat: no-repeat;
+  background-position: -363px -128px;
+  display: inline-block;
+  float: left;
+  width: 40px;
+  height: 116px;
+  margin-right: 0.5em;
 }
