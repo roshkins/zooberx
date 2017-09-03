@@ -129,7 +129,6 @@ describe('Wildebeest model', function() {
   /**
  * This tests getWildebeests() by displaying all the Wildebeests we
  * added above.
- * @memberof test
  */
   it('should list all wildebeests', function(done) {
     // check if the beests were added
