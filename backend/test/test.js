@@ -5,12 +5,10 @@ const assert = require('chai').assert;
 const superagent = require('superagent');
 const app = require('../server/server');
 
-
 /**
 Test our Wildebeest model.
 */
-describe('Wildebeest model',
- function() {
+describe('Wildebeest model', function() {
   var server;
   const loopbackUrl = 'http://localhost:3001/';
   beforeEach(function(done) {
@@ -84,7 +82,7 @@ describe('Wildebeest model',
     },
   ];
 
-/** Submits a HTTP request to check wildebeests can be added.
+  /** Submits a HTTP request to check wildebeests can be added.
  */
   it('should add wildebeests', function(done) {
     // Example test:
@@ -128,7 +126,7 @@ describe('Wildebeest model',
     });
   });
 
-/**
+  /**
  * This tests getWildebeests() by displaying all the Wildebeests we
  * added above.
  * @memberof test
@@ -157,7 +155,7 @@ describe('Wildebeest model',
       });
   });
 
-/** Here I know the closest beest is Beth, so I make sure it is. */
+  /** Here I know the closest beest is Beth, so I make sure it is. */
   it('should find the closest beest', function(done) {
     superagent
       .get(loopbackUrl + 'api/wildebeests/getYourWildebeest')
@@ -179,7 +177,7 @@ describe('Wildebeest model',
       });
   });
 
-/** Check for bounding error if it happened.
+  /** Check for bounding error if it happened.
 * @memberof test
 */
   it('should find the closest beest with a location not in range', function(
@@ -205,7 +203,7 @@ describe('Wildebeest model',
       });
   });
 
-/**
+  /**
 * If no beests are going in a direction we should tell the user.
 * This deletes 9 beests and checks for the nearest one going in the
 * opposite direction. It should not return a valid beast.
