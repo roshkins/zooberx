@@ -3,12 +3,22 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import beestSprites from "./Wildebeest.png";
 
-// Wrap all `react-google-maps` components with `withGoogleMap` HOC
-// and name it GettingStartedGoogleMap
 const googleMapURL =
   "https://maps.googleapis.com/maps/api/js?v=3.27&libraries=places,geometry&key=AIzaSyCoIwKw-GePkOM4yjeL4a55AIKu_E0C65Q";
 
+/**
+* Encapsulates the Google Maps API.
+* @class Map
+ */
 class Map extends Component {
+  /**
+  * Render the Google Map with the markers for the beests and their
+  * destinations and the Oxpecker. The parameters are passed in as props.
+  *
+  * @param {Array} beests The wildebeest objects to render on the map.
+  * @param {Array} destinations The destination locations of the wildebeests.
+  * @return The encapsulated object.
+  */
   render() {
     var markers = this.props.destinations.concat(
       this.props.beests.map(beest => ({

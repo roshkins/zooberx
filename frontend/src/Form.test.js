@@ -3,6 +3,7 @@ import { expect } from "chai";
 import { render } from "enzyme";
 import Form from "./Form";
 
+/** Renders the form and tests that the inputs update correctly. */
 it("Puts the location in the textboxes and shows the correct direction", () => {
   const form = render(
     <Form

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 
 class Ride extends Component {
+  /**
+  * Renders the ride when there are beests or displays an error.
+  * @param {string} beestName The name of the beest or "no_beests".
+   */
   render() {
     if (this.props.beestName === "no_beests") {
       return (
