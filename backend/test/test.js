@@ -5,10 +5,12 @@ const assert = require('chai').assert;
 const superagent = require('superagent');
 const app = require('../server/server');
 
+
 /**
-  Test our Wildebeest model.
- */
-describe('Wildebeest model', function() {
+Test our Wildebeest model.
+*/
+describe('Wildebeest model',
+ function() {
   var server;
   const loopbackUrl = 'http://localhost:3001/';
   beforeEach(function(done) {
@@ -82,7 +84,8 @@ describe('Wildebeest model', function() {
     },
   ];
 
-  /** Submits a HTTP request to check wildebeests can be added. */
+/** Submits a HTTP request to check wildebeests can be added.
+ */
   it('should add wildebeests', function(done) {
     // Example test:
     // superagent
@@ -125,10 +128,11 @@ describe('Wildebeest model', function() {
     });
   });
 
-  /**
-   * This tests getWildebeests() by displaying all the Wildebeests we
-   * added above.
-   */
+/**
+ * This tests getWildebeests() by displaying all the Wildebeests we
+ * added above.
+ * @memberof test
+ */
   it('should list all wildebeests', function(done) {
     // check if the beests were added
     superagent
@@ -153,7 +157,7 @@ describe('Wildebeest model', function() {
       });
   });
 
-  /** Here I know the closest beest is Beth, so I make sure it is. */
+/** Here I know the closest beest is Beth, so I make sure it is. */
   it('should find the closest beest', function(done) {
     superagent
       .get(loopbackUrl + 'api/wildebeests/getYourWildebeest')
@@ -175,7 +179,9 @@ describe('Wildebeest model', function() {
       });
   });
 
-  /** Check for bounding error if it happened. */
+/** Check for bounding error if it happened.
+* @memberof test
+*/
   it('should find the closest beest with a location not in range', function(
     done
   ) {
@@ -199,10 +205,11 @@ describe('Wildebeest model', function() {
       });
   });
 
-  /**
+/**
 * If no beests are going in a direction we should tell the user.
 * This deletes 9 beests and checks for the nearest one going in the
 * opposite direction. It should not return a valid beast.
+* @memberof test
 */
   // eslint-disable-next-line max-len
   it('should return "no_beests" if none of the beests are going in this direction', function(
