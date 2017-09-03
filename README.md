@@ -1,11 +1,12 @@
 # Wildebeests and Where to Find Them
 
 # How to run the project:
- There is a script, "init.bat" that launches both packages on different ports for Windows machines. On other machines: "cd ./frontend" -> "npm start". Then "cd ../backend" -> "npm start". View the frontend at "http://localhost:3000".
+
+ Set an environment variable "mode" to "PROD". There is a script, "init.bat" that launches both packages on different ports for Windows machines. On other machines: "cd ./frontend" -> "npm start". Then "cd ../backend" -> "npm start". View the frontend at "http://localhost:3000".
 
 ## Tests
 # backend
- Set an environment variable "mode" to "TEST" (all caps). Make sure the project isn't running. In powershell, the command is: '$env:mode = "TEST"'.
+ Set an environment variable "mode" to "TEST" (all caps). Make sure the project isn't running. In powershell, the command is: $env:mode = "TEST".
 
  In your cli: "cd ./frontend" -> "npm test". "cd ../backend" -> "npm test".
 ## Docs
