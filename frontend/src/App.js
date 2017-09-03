@@ -93,6 +93,22 @@ class App extends Component {
     getBeestsFromServer();
     setInterval(getBeestsFromServer, 3000);
   }
+
+  getNearestBeest(latitude, longitude, direction) {
+    fetch(
+      backendApi +
+        `wildebeests/getYourWildebeest?latitude=${latitude}&longitude=${longitude}&destination=${direction}`,
+      {
+        method: "GET",
+        headers: { Accept: "application/json" }
+      }
+    )
+      .then(response => response.json())
+      .then(json => {
+        this.setState({ nearestBeestName: json.name });
+      });
+  }
+
   render() {
     return (
       <div className="App">
@@ -101,6 +117,13 @@ class App extends Component {
             zoober<span className="x">X</span>
           </div>
           <Form
+            getNearestBeest={() =>
+              this.getNearestBeest(
+                this.state.pickupLocation.lat,
+                this.state.pickupLocation.lng,
+                this.state.pickupDirection
+              )}
+            nearestBeestName={this.state.nearestBeestName}
             pickupLocation={this.state.pickupLocation}
             setLatitude={lat =>
               this.setState({

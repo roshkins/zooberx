@@ -12,7 +12,13 @@ class Form extends Component {
       : "";
 
     return (
-      <form className="Form">
+      <form
+        className="Form"
+        onSubmit={e => {
+          e.preventDefault();
+          this.props.getNearestBeest();
+        }}
+      >
         <p>
           Right-click on the map to the right to auto-fill that location or type
           in the boxes below. Click "Request" and enjoy your ride.
@@ -20,6 +26,7 @@ class Form extends Component {
         <input
           id="latitude"
           type="number"
+          step="0.01"
           name="latitude"
           placeholder="Your latitude"
           value={latitude}
@@ -28,6 +35,7 @@ class Form extends Component {
         <input
           id="longitude"
           type="number"
+          step="0.01"
           name="longitude"
           placeholder="Your longitude"
           value={longitude}
@@ -47,7 +55,9 @@ class Form extends Component {
           <option value="Tanzania">Tanzania</option>
         </select>
         <input type="submit" value="Request" className="Submit" />
-        <Ride />
+        {this.props.nearestBeestName
+          ? <Ride beestName={this.props.nearestBeestName} />
+          : ""}
       </form>
     );
   }
@@ -58,7 +68,9 @@ Form.propTypes = {
   direction: PropTypes.string,
   setLatitude: PropTypes.func.isRequired,
   setLongitude: PropTypes.func.isRequired,
-  setDirection: PropTypes.func.isRequired
+  setDirection: PropTypes.func.isRequired,
+  getNearestBeest: PropTypes.func.isRequired,
+  nearestBeestName: PropTypes.string
 };
 
 export default Form;
