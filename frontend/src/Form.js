@@ -16,12 +16,13 @@ class Form extends Component {
         className="Form"
         onSubmit={e => {
           e.preventDefault();
-          this.props.getNearestBeest();
+          if (this.props.pickupLocation && this.props.direction !== "direction")
+            this.props.getNearestBeest();
         }}
       >
         <p>
-          Right-click on the map to the right to auto-fill that location or type
-          in the boxes below. Click "Request" and enjoy your ride.
+          Right-click on the map to auto-fill that location or type in the boxes
+          below. Click "Request" and enjoy your ride.
         </p>
         <input
           id="latitude"

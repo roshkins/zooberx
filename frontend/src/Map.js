@@ -1,6 +1,7 @@
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import beestSprites from "./Wildebeest.png";
 
 // Wrap all `react-google-maps` components with `withGoogleMap` HOC
 // and name it GettingStartedGoogleMap
@@ -11,6 +12,12 @@ class Map extends Component {
   render() {
     var markers = this.props.destinations.concat(
       this.props.beests.map(beest => ({
+        icon: {
+          url: beestSprites,
+          origin: { x: 526, y: 8 },
+          size: { width: 20, height: 38 }
+        },
+        title: beest.name,
         position: { lat: Number(beest.latitude), lng: Number(beest.longitude) }
       }))
     );

@@ -38,6 +38,7 @@ module.exports = function(app, cb) {
       );
     });
   }
+  generateBeests();
   setInterval(generateBeests, 3000);
   process.nextTick(cb); // Remove if you pass `cb` to an async function yourself
 };
