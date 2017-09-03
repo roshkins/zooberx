@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "start": "node .",
     "test": "mocha",
-    "posttest": "npm run lint && nsp check"
+    "posttest": "npm run lint && nsp check",
+    "docs": "jsdoc -r . -c conf.json -d docs"
   },
   "dependencies": {
     "compression": "^1.0.3",
@@ -26,6 +27,7 @@
     "chai": "^4.1.2",
     "eslint": "^3.17.1",
     "eslint-config-loopback": "^8.0.0",
+    "jsdoc": "^3.5.4",
     "mocha": "^3.5.0",
     "nsp": "^2.1.0",
     "superagent": "^3.6.0"

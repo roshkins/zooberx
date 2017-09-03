@@ -126,9 +126,9 @@ describe('Wildebeest model', function() {
   });
 
   /**
-    This tests getWildebeests() by displaying all the Wildebeests we
-    added above.
-  */
+   * This tests getWildebeests() by displaying all the Wildebeests we
+   * added above.
+   */
   it('should list all wildebeests', function(done) {
     // check if the beests were added
     superagent
@@ -200,10 +200,10 @@ describe('Wildebeest model', function() {
   });
 
   /**
-  If no beests are going in a direction we should tell the user.
-   This deletes 9 beests and checks for the nearest one going in the
-   opposite direction. It should not return a valid beast.
-  */
+* If no beests are going in a direction we should tell the user.
+* This deletes 9 beests and checks for the nearest one going in the
+* opposite direction. It should not return a valid beast.
+*/
   // eslint-disable-next-line max-len
   it('should return "no_beests" if none of the beests are going in this direction', function(
     done
