@@ -6,6 +6,7 @@ import Form from "./Form";
 it("Puts the location in the textboxes and shows the correct direction", () => {
   const form = render(
     <Form
+      getNearestBeest={() => ""}
       pickupLocation={{ lat: -1, lng: 3 }}
       setLatitude={() => ""}
       setLongitude={() => ""}

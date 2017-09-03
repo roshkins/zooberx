@@ -22,7 +22,8 @@ class Form extends Component {
       >
         <p>
           Right-click on the map to auto-fill that location or type in the boxes
-          below. Click "Request" and enjoy your ride.
+          below. Click "Request" and enjoy your ride. You can move the mouse
+          over each wildebeest to see its name.
         </p>
         <input
           id="latitude"

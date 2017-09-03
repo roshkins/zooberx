@@ -19,15 +19,17 @@ exports[`renders correctly 1`] = `
     </div>
     <form
       className="Form"
+      onSubmit={[Function]}
     >
       <p>
-        Right-click on the map to the right to auto-fill that location or type in the boxes below. Click "Request" and enjoy your ride.
+        Right-click on the map to auto-fill that location or type in the boxes below. Click "Request" and enjoy your ride. You can move the mouse over each wildebeest to see its name.
       </p>
       <input
         id="latitude"
         name="latitude"
         onChange={[Function]}
         placeholder="Your latitude"
+        step="0.01"
         type="number"
         value=""
       />
@@ -36,6 +38,7 @@ exports[`renders correctly 1`] = `
         name="longitude"
         onChange={[Function]}
         placeholder="Your longitude"
+        step="0.01"
         type="number"
         value=""
       />
@@ -67,6 +70,7 @@ exports[`renders correctly 1`] = `
         type="submit"
         value="Request"
       />
+      
     </form>
   </div>
   <div
