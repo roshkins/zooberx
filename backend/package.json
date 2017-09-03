@@ -10,7 +10,7 @@
     "start": "node .",
     "test": "mocha",
     "posttest": "npm run lint && nsp check",
-    "docs": "jsdoc -r . -c conf.json -d docs"
+    "docs": "jsdoc -r . -c conf.json -d docs --readme ./README.md"
   },
   "dependencies": {
     "compression": "^1.0.3",
