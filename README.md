@@ -1,4 +1,5 @@
 # Wildebeests and Where to Find Them
+In the African desert, Oxpeckers ride wildebeests to migrate. This program allows birds to find a wildebeest going in the direction they want to go in.
 
 # How to run the project:
 
